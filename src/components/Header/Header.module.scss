@@ -1,0 +1,243 @@
+// Mobile-first стили для Header
+@import '@assets/styles/variables';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1000;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: $font-inter;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: 100%;
+}
+
+// Логотип
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #000000;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logoText {
+  font-family: $font-poppins;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+// Навигация (скрыта на мобильных)
+.nav {
+  display: none;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #606060;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+// Кнопка CONNECT WALLET (скрыта на мобильных)
+.connectButton {
+  display: none;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #333333;
+  }
+
+  &:active {
+    background-color: #000000;
+  }
+}
+
+// Hamburger menu (видно на мобильных)
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+}
+
+.menuButtonLine {
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+  transform-origin: center;
+}
+
+.menuButtonLine:nth-child(1) {
+  top: 0;
+}
+
+.menuButtonLine:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menuButtonLine:nth-child(3) {
+  bottom: 0;
+}
+
+// Анимация при открытом меню (трансформация в крестик)
+.menuButtonOpen {
+  .menuButtonLine:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .menuButtonLine:nth-child(2) {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  .menuButtonLine:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+}
+
+// Мобильное меню
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 1rem 1.5rem;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobileNavLink {
+  text-decoration: none;
+  color: #606060;
+  font-weight: 500;
+  font-size: 40px;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.mobileConnectButton {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #333333;
+  }
+}
+
+// Desktop стили (от 768px)
+@media (min-width: 768px) {
+  .container {
+    padding: 1.25rem 2rem;
+  }
+
+  // Показываем навигацию
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  // Показываем кнопку CONNECT WALLET
+  .connectButton {
+    display: block;
+  }
+
+  // Скрываем hamburger menu
+  .menuButton {
+    display: none;
+  }
+
+  // Скрываем мобильное меню
+  .mobileMenu {
+    display: none;
+  }
+
+  .logoText {
+    display: none;
+  }
+}
+
+// Tablet и Desktop (от 1024px)
+@media (min-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .navLink {
+    font-size: 0.9375rem;
+    padding: 0.5rem 1.25rem;
+  }
+}
