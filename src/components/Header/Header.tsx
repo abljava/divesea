@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styles from './Header.module.scss'
-import logoImg from '@/assets/images/logo.png'
+import logoImg from '@/assets/images/logo.svg'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,7 +38,7 @@ const Header = () => {
           CONNECT WALLET
         </button>
 
-        {/* Hamburger menu (mobile) */}
+        {/* Burger menu (mobile) */}
         <button
           className={`${styles.menuButton} ${isMenuOpen ? styles.menuButtonOpen : ''}`}
           type="button"
@@ -52,29 +52,31 @@ const Header = () => {
       </div>
 
       {/* Мобильное меню */}
-      {isMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <nav className={styles.mobileNav}>
-            {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className={styles.mobileNavLink}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link}
-              </a>
-            ))}
-            <button
-              className={styles.mobileConnectButton}
-              type="button"
+      <div
+        className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}
+        aria-hidden={!isMenuOpen}
+      >
+        <nav className={styles.mobileNav}>
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className={styles.mobileNavLink}
               onClick={() => setIsMenuOpen(false)}
             >
-              CONNECT WALLET
-            </button>
-          </nav>
-        </div>
-      )}
+              {link}
+            </a>
+          ))}
+        </nav>
+
+        <button
+          className={styles.mobileConnectButton}
+          type="button"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          CONNECT WALLET
+        </button>
+      </div>
     </header>
   )
 }
