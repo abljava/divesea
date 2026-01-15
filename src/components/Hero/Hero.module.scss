@@ -146,6 +146,7 @@
 .mainImage {
   width: 210px;
   height: 210px;
+  object-fit: cover;
   border-radius: 1.5rem;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
   z-index: 2;
@@ -153,6 +154,7 @@
 
 .secondaryImage {
   position: absolute;
+  object-fit: cover;
   right: -24%;
   top: 65%;
   transform: translateY(-50%);
