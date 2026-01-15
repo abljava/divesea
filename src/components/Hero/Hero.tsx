@@ -157,6 +157,8 @@ const Hero = () => {
             className={styles.mainImage}
             src={heroMain}
             alt="NFT artwork"
+            fetchPriority="high"
+            decoding="async"
           />
           <img
             ref={secondaryImageRef}
@@ -164,6 +166,8 @@ const Hero = () => {
             src={heroSecondary}
             alt=""
             aria-hidden="true"
+            fetchPriority="high"
+            decoding="async"
           />
           <img
             ref={arrowRef}

@@ -1,5 +1,5 @@
 // Mobile-first стили для Header
-@import '@assets/styles/variables';
+@use '@assets/styles/variables' as *;
 
 $header-height: 72px;
 

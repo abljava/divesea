@@ -1,5 +1,5 @@
 // Главный SCSS файл для глобальных стилей
-@import './variables';
+@use './variables' as *;
 
 // Глобальные стили
 :root {

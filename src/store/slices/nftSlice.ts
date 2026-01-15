@@ -33,13 +33,7 @@ export const fetchNFTs = createAsyncThunk(
 const nftSlice = createSlice({
   name: 'nft',
   initialState,
-  reducers: {
-    resetNFTState: (state) => {
-      state.items = []
-      state.status = 'idle'
-      state.error = null
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       // Обработка pending (начало загрузки)
@@ -60,8 +54,6 @@ const nftSlice = createSlice({
       })
   },
 })
-
-export const { resetNFTState } = nftSlice.actions
 
 export const selectNFTs = (state: RootState) => state.nft.items
 export const selectNFTStatus = (state: RootState) => state.nft.status

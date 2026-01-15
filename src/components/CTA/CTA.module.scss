@@ -1,4 +1,4 @@
-@import "@assets/styles/variables";
+@use "@assets/styles/variables" as *;
 
 .cta {
   padding: 4rem 1.5rem 11rem;

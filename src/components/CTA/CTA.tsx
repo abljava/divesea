@@ -49,7 +49,14 @@ const CTA = () => {
             </div>
           </div>
           <div className={styles.visual}>
-            <img className={styles.image} src={ctaImage} alt="NFT artwork" ref={imageRef} />
+            <img 
+              className={styles.image} 
+              src={ctaImage} 
+              alt="NFT artwork" 
+              ref={imageRef}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

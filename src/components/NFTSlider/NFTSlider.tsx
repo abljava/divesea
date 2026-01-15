@@ -2,11 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./NFTSlider.module.scss";
 import NFTCard from "./NFTCard";
+import NFTCardSkeleton from "./NFTCardSkeleton";
 import type { AppDispatch } from "@/store";
 import {
   fetchNFTs,
   selectNFTStatus,
   selectNFTs,
+  selectNFTError,
 } from "@/store/slices/nftSlice";
 import type { NFTCardData } from "@/types";
 import { generateBid } from "@/utils/generateBid";
@@ -19,6 +21,7 @@ const NFTSlider = () => {
   const dispatch = useDispatch<AppDispatch>();
   const status = useSelector(selectNFTStatus);
   const nfts = useSelector(selectNFTs);
+  const error = useSelector(selectNFTError);
   const [index, setIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [dragState, setDragState] = useState({
@@ -34,6 +37,10 @@ const NFTSlider = () => {
       dispatch(fetchNFTs());
     }
   }, [dispatch, status]);
+
+  const handleRetry = () => {
+    dispatch(fetchNFTs());
+  };
 
   const cards = useMemo<NFTCardData[]>(() => {
     return nfts.slice(0, 12).map((item, idx) => ({
@@ -125,16 +132,49 @@ const NFTSlider = () => {
 
       <div className={styles.sliderViewport}>
         {status === "loading" && (
-          <div className={styles.state}>Loading NFTs...</div>
+          <div className={styles.skeletonTrack}>
+            {Array.from({ length: 8 }).map((_, idx) => (
+              <div
+                key={`skeleton-${idx}`}
+                className={styles.slide}
+                style={{ width: `${CARD_WIDTH}px` }}
+              >
+                <NFTCardSkeleton />
+              </div>
+            ))}
+          </div>
         )}
+        
         {status === "failed" && (
-          <div className={styles.state}>Failed to load NFTs</div>
+          <div className={styles.errorState}>
+            <div className={styles.errorMessage}>Failed to load NFTs</div>
+            {error && (
+              <div className={styles.errorDetails}>{error}</div>
+            )}
+            <button
+              type="button"
+              className={styles.retryButton}
+              onClick={handleRetry}
+            >
+              Try Again
+            </button>
+          </div>
         )}
-        {status !== "loading" && cards.length === 0 && (
-          <div className={styles.state}>No NFTs yet</div>
+        
+        {status === "succeeded" && cards.length === 0 && (
+          <div className={styles.state}>
+            <div>No NFTs available</div>
+            <button
+              type="button"
+              className={styles.retryButton}
+              onClick={handleRetry}
+            >
+              Refresh
+            </button>
+          </div>
         )}
 
-        {cards.length > 0 && (
+        {cards.length > 0 && status === "succeeded" && (
           <div
             className={`${styles.track} ${
               isAnimating ? styles.trackAnimating : ""
@@ -160,7 +200,8 @@ const NFTSlider = () => {
           </div>
         )}
       </div>
-      <div className={styles.controls}>
+      {cards.length > 0 && status === "succeeded" && (
+        <div className={styles.controls}>
         <button
           type="button"
           className={styles.controlButton}
@@ -208,7 +249,8 @@ const NFTSlider = () => {
             />
           </svg>
         </button>
-      </div>
+        </div>
+      )}
     </section>
   );
 };

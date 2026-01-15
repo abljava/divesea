@@ -56,7 +56,13 @@ const NFTCard = ({ nft, className }: NFTCardProps) => {
   return (
     <article className={`${styles.card} ${className ?? ""}`.trim()}>
       <div className={styles.imageWrap}>
-        <img className={styles.image} src={imageRef.current} alt={nft.name} />
+        <img 
+          className={styles.image} 
+          src={imageRef.current} 
+          alt={nft.name}
+          loading="lazy"
+          decoding="async"
+        />
         <div className={styles.timer}>
           {`${formatTime(hours)}h ${formatTime(minutes)}m ${formatTime(
             seconds

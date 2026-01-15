@@ -1,4 +1,4 @@
-@import "@assets/styles/variables";
+@use "@assets/styles/variables" as *;
 
 .hero {
   padding: 10.25rem 1.5rem 7.5rem;
