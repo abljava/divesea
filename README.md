@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# DiveSea - NFT Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Адаптивный веб-сайт NFT маркетплейса с современным дизайном и интерактивными компонентами.
 
-Currently, two official plugins are available:
+## Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+DiveSea - это современная платформа для открытия, создания и продажи NFT. Проект включает в себя:
 
-## React Compiler
+- **Hero секция** с анимациями и статистикой
+- **NFT слайдер** с бесконечной прокруткой, поддержкой свайпов и drag-and-drop
+- **CTA секция** для привлечения пользователей
+- **Адаптивный дизайн** для всех устройств (mobile, tablet, desktop)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Технологический стек
 
-## Expanding the ESLint configuration
+- **React 19** - UI библиотека
+- **TypeScript** - типизация
+- **Vite** - сборщик и dev-сервер
+- **Redux Toolkit** - управление состоянием
+- **SCSS** - стилизация
+- **GSAP** - анимации
+- **CoinGecko API** - данные NFT
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Установка и запуск
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Требования
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js 18+ 
+- npm или yarn
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Локальный запуск
+
+1. Клонируйте репозиторий:
+```bash
+git clone <repository-url>
+cd divesea
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Установите зависимости:
+```bash
+npm install
 ```
+
+3. Запустите dev-сервер:
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу `http://localhost:5173`
+
+### Сборка для production
+
+```bash
+npm run build
+```
+
+Собранные файлы будут в папке `dist/`
+
+### Предпросмотр production сборки
+
+```bash
+npm run preview
+```
+
+## Запуск через Docker
+
+### Сборка образа
+
+```bash
+docker build -t divesea .
+```
+
+### Запуск контейнера
+
+```bash
+docker run -p 8080:80 divesea
+```
+
+Приложение будет доступно по адресу `http://localhost:8080`
+
+## Доступные команды
+
+- `npm run dev` - запуск dev-сервера
+- `npm run build` - сборка для production
+- `npm run preview` - предпросмотр production сборки
+- `npm run lint` - проверка кода линтером
+
+## Структура проекта
+
+```
+divesea/
+├── src/
+│   ├── components/     # React компоненты
+│   ├── store/          # Redux store и слайсы
+│   ├── hooks/          # Кастомные хуки
+│   ├── utils/          # Утилиты
+│   ├── types/          # TypeScript типы
+│   └── assets/         # Статические файлы (изображения, стили)
+├── public/             # Публичные файлы
+└── dist/               # Собранные файлы (генерируется)
+```
+
+## Особенности
+
+- 🎨 Адаптивный дизайн для всех устройств
+- ⚡ Быстрая загрузка благодаря Vite
+- 🎭 Плавные анимации с GSAP
+- 📱 Поддержка touch-событий и drag-and-drop
+- 🔄 Бесконечная прокрутка слайдера
+- 🎯 TypeScript для типобезопасности
+- 🎨 Модульные SCSS стили
+
+## Лицензия
+
+MIT
