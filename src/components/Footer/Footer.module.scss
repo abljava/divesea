@@ -1,9 +1,9 @@
-@import "@assets/styles/variables";
+@import '@assets/styles/variables';
 
 .footer {
   background-color: #0f0f0f;
   color: #ffffff;
-  padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem 2rem;
 }
 
 .container {
@@ -52,7 +52,6 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  line-height: 19px;
   transition: color 0.2s ease;
 
   &:hover {
@@ -70,7 +69,6 @@
   grid-area: socials;
   justify-self: end;
   display: flex;
-  align-items: center;
 }
 
 .copy {
