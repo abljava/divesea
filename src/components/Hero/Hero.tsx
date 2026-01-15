@@ -6,7 +6,13 @@ import heroSecondary from "@/assets/images/hero-2.jpg";
 import heroArrow from "@/assets/images/arrow.png";
 
 const Hero = () => {
+  const heroRef = useRef<HTMLElement | null>(null);
   const visualRef = useRef<HTMLDivElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+  const actionsRef = useRef<HTMLDivElement | null>(null);
+  const statsRef = useRef<HTMLDivElement | null>(null);
   const mainImageRef = useRef<HTMLImageElement | null>(null);
   const secondaryImageRef = useRef<HTMLImageElement | null>(null);
   const arrowRef = useRef<HTMLImageElement | null>(null);
@@ -19,6 +25,41 @@ const Hero = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      const textTl = gsap.timeline();
+
+      if (titleRef.current) {
+        textTl.from(titleRef.current, {
+          y: 16,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power2.out",
+        });
+      }
+
+      if (descriptionRef.current) {
+        textTl.from(descriptionRef.current, {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out",
+        });
+      }
+
+      if (actionsRef.current) {
+        textTl.from(actionsRef.current, {
+          opacity: 0,
+          duration: 2,
+          ease: "power1.out",
+        });
+      }
+
+      if (statsRef.current) {
+        textTl.from(
+          statsRef.current,
+          { y: 12, opacity: 0, duration: 0.5, ease: "power2.out" },
+          "+=0.2"
+        );
+      }
+
       if (mainImageRef.current) {
         gsap.set(mainImageRef.current, { x: 80, opacity: 0 });
       }
@@ -58,25 +99,29 @@ const Hero = () => {
           "-=0.1"
         );
       }
-    }, visualRef);
+    }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section className={styles.hero} id="discover">
+    <section className={styles.hero} id="discover" ref={heroRef}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div>
             {" "}
-            <p className={styles.subtitle}>OVER 1M CREATORS</p>
-            <h1 className={styles.title}>Discover And Create NFTs</h1>
+            <p className={styles.subtitle} ref={subtitleRef}>
+              OVER 1M CREATORS
+            </p>
+            <h1 className={styles.title} ref={titleRef}>
+              Discover And Create NFTs
+            </h1>
           </div>
-          <p className={styles.description}>
+          <p className={styles.description} ref={descriptionRef}>
             Discover, Create and Sell NFTs On Our NFT Marketplace<br></br> With
             Over Thousands Of NFTs And Get a <span>$20 bonus</span>.
           </p>
-          <div className={styles.actions}>
+          <div className={styles.actions} ref={actionsRef}>
             <button className={styles.primaryButton} type="button">
               EXPLORE MORE
             </button>
@@ -84,7 +129,7 @@ const Hero = () => {
               CREATE NFT
             </button>
           </div>
-          <div className={styles.stats}>
+          <div className={styles.stats} ref={statsRef}>
             {stats.map((item) => (
               <div key={item.label} className={styles.statItem}>
                 <span className={styles.statValue}>{item.value}</span>
