@@ -6,12 +6,13 @@
   gap: 3rem;
   padding: 3.15rem 1.5rem;
   background-color: #F1F1F1;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .headerRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -32,7 +33,9 @@
   background: #ffffff;
   border-radius: 16px;
   padding: 15px;
-  box-shadow: 0 32.34px 25.87px -19.4px rgba(15, 15, 15, 0.12);
+  box-shadow: 0 32.34px 25.87px -19.4px rgba(15, 15, 15, 0.12),
+              0 0 40px rgba(15, 15, 15, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .controlButton {
@@ -71,11 +74,14 @@
 }
 
 .sliderViewport {
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  padding: 30px 20px;
+  margin-top: -30px;
+  margin-bottom: -30px;
 }
 
 .track {
@@ -85,6 +91,8 @@
   user-select: none;
   touch-action: pan-y;
   transition: transform 0.4s ease;
+  --gap: 32px;
+  gap: var(--gap);
 }
 
 .trackAnimating {
@@ -103,7 +111,13 @@
 
 @media (min-width: 768px) {
   .sliderSection {
-    padding: 5rem 2.5rem;
+    padding: 3.15rem 2.5rem;
+  }
+
+  .headerRow {
+    justify-content: center;
+
+
   }
 
   .title {
@@ -111,8 +125,8 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .sliderSection {
-    padding: 6rem 3rem;
+@media (min-width: 1440px) {
+  .track {
+    --gap: 40px;
   }
 }

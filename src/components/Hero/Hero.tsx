@@ -16,6 +16,7 @@ const Hero = () => {
   const mainImageRef = useRef<HTMLImageElement | null>(null);
   const secondaryImageRef = useRef<HTMLImageElement | null>(null);
   const arrowRef = useRef<HTMLImageElement | null>(null);
+  const dotsRef = useRef<HTMLDivElement | null>(null);
 
   const stats = [
     { value: "430K+", label: "Art Works" },
@@ -66,6 +67,9 @@ const Hero = () => {
       if (secondaryImageRef.current) {
         gsap.set(secondaryImageRef.current, { x: 80, opacity: 0 });
       }
+      if (dotsRef.current) {
+        gsap.set(dotsRef.current, { opacity: 0 });
+      }
       if (arrowRef.current) {
         gsap.set(arrowRef.current, { opacity: 0 });
       }
@@ -84,11 +88,18 @@ const Hero = () => {
           secondaryImageRef.current,
           {
             x: 0,
-            opacity: 0.75,
+            opacity: 1,
             duration: 0.8,
             ease: "power2.out",
           },
           "-=0.4"
+        );
+      }
+      if (dotsRef.current) {
+        tl.to(
+          dotsRef.current,
+          { opacity: 0.8, duration: 2, ease: "power1.out" },
+          "-=0.1"
         );
       }
 
@@ -96,7 +107,7 @@ const Hero = () => {
         tl.to(
           arrowRef.current,
           { opacity: 1, duration: 2, ease: "power1.out" },
-          "-=0.1"
+          "<"
         );
       }
     }, heroRef);
@@ -118,7 +129,7 @@ const Hero = () => {
             </h1>
           </div>
           <p className={styles.description} ref={descriptionRef}>
-            Discover, Create and Sell NFTs On Our NFT Marketplace<br></br> With
+            Discover, Create and Sell NFTs On Our NFT Marketplace With
             Over Thousands Of NFTs And Get a <span>$20 bonus</span>.
           </p>
           <div className={styles.actions} ref={actionsRef}>
@@ -140,7 +151,7 @@ const Hero = () => {
         </div>
 
         <div className={styles.visual} ref={visualRef}>
-          <div className={styles.dots} aria-hidden="true" />
+          <div className={styles.dots} ref={dotsRef} aria-hidden="true" />
           <img
             ref={mainImageRef}
             className={styles.mainImage}

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './Header.module.scss'
 import logoImg from '@/assets/images/logo.svg'
+import SocialLinks from '@/components/common/SocialLinks/SocialLinks'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -68,6 +69,10 @@ const Header = () => {
             </a>
           ))}
         </nav>
+
+        <div className={styles.mobileSocials}>
+          <SocialLinks variant='burger' />
+        </div>
 
         <button
           className={styles.mobileConnectButton}

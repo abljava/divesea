@@ -13,7 +13,6 @@ import { generateBid } from "@/utils/generateBid";
 import { generateTimer } from "@/utils/generateTimer";
 import { getRandomImage } from "@/utils/getRandomImage";
 
-const GAP = 16;
 const CARD_WIDTH = 210;
 
 const NFTSlider = () => {
@@ -27,6 +26,8 @@ const NFTSlider = () => {
     startX: 0,
     delta: 0,
   });
+
+  const gap = window.matchMedia("(min-width: 1440px)").matches ? 40 : 32;
 
   useEffect(() => {
     if (status === "idle") {
@@ -55,7 +56,7 @@ const NFTSlider = () => {
   }, [cards.length]);
 
   const slideWidth = CARD_WIDTH;
-  const translateX = -(index * (slideWidth + GAP));
+  const translateX = -(index * (slideWidth + gap));
   const currentTranslate = dragState.isDragging
     ? translateX + dragState.delta
     : translateX;
@@ -140,7 +141,6 @@ const NFTSlider = () => {
             }`}
             style={{
               transform: `translate3d(${currentTranslate}px, 0, 0)`,
-              gap: `${GAP}px`,
             }}
             onTransitionEnd={handleTransitionEnd}
             onPointerDown={onPointerDown}

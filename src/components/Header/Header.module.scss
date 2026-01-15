@@ -13,6 +13,8 @@ $header-height: 72px;
   background-color: #ffffff;
   z-index: 1000;
   font-family: $font-inter;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .container {
@@ -180,8 +182,15 @@ $header-height: 72px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 1;
+  flex: 0 0 auto;
 }
+
+.mobileSocials {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 30px;
+}
+
 
 .mobileNavLink {
   text-decoration: none;
@@ -220,6 +229,8 @@ $header-height: 72px;
 @media (min-width: 768px) {
   .container {
     padding: 1.25rem 2rem;
+    justify-content: flex-start;
+    gap: 3rem;
   }
 
   // Показываем навигацию
@@ -227,6 +238,11 @@ $header-height: 72px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-left: 0;
+  }
+
+  .connectButton {
+    margin-left: auto;
   }
 
   // Показываем кнопку CONNECT WALLET

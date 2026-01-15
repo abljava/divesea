@@ -35,20 +35,22 @@ const CTA = () => {
   return (
     <section className={styles.cta} ref={sectionRef}>
       <div className={styles.container}>
-        <div className={styles.content} ref={textRef}>
-          <h2 className={styles.title}>Create and Sell NFTs</h2>
-          <p className={styles.subtitle}>World&apos;s Largest NFT Place</p>
-          <div className={styles.actions}>
-            <button className={styles.primaryButton} type="button">
-              Explore More
-            </button>
-            <button className={styles.secondaryButton} type="button">
-              Sell Artwork
-            </button>
+        <div className={styles.content}>
+          <div className={styles.textBlock} ref={textRef}>
+            <h2 className={styles.title}>Create and Sell NFTs</h2>
+            <p className={styles.subtitle}>World&apos;s Largest NFT Place</p>
+            <div className={styles.actions}>
+              <button className={styles.primaryButton} type="button">
+                Explore More
+              </button>
+              <button className={styles.secondaryButton} type="button">
+                Sell Artwork
+              </button>
+            </div>
           </div>
-        </div>
-        <div className={styles.visual}>
-          <img className={styles.image} src={ctaImage} alt="NFT artwork" ref={imageRef} />
+          <div className={styles.visual}>
+            <img className={styles.image} src={ctaImage} alt="NFT artwork" ref={imageRef} />
+          </div>
         </div>
       </div>
     </section>

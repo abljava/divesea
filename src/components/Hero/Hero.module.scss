@@ -36,7 +36,7 @@
   letter-spacing: 1px;
 
   &::before {
-    content: '';
+    content: "";
     width: 33px;
     height: 1px;
     background-color: #aeaeae;
@@ -51,6 +51,7 @@
   text-align: center;
   color: #141416;
   margin: 0;
+  position: relative;
 }
 
 .description {
@@ -122,15 +123,15 @@
 }
 
 .statValue {
-  font-family: $font-poppins;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-family: $font-public-sans;
+  font-size: 1.6rem;
+  font-weight: 600;
   color: #000000;
 }
 
 .statLabel {
   font-family: $font-inter;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #606060;
 }
 
@@ -161,29 +162,32 @@
   width: 170px;
   height: 170px;
   border-radius: 1.25rem;
-  opacity: 0.75;
-  filter: blur(1px);
   z-index: 1;
 }
 
 .arrow {
   position: absolute;
+  width: 65px;
   right: 12%;
   top: 10%;
-  width: 65px;
   z-index: 3;
 }
 
 .dots {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 140px;
-  height: 140px;
-  background-image: radial-gradient(#d8d8d8 1px, transparent 1px);
-  background-size: 12px 12px;
-  opacity: 0.6;
+  left: auto;
+  right: -24%;
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: 0 0;
+  opacity: 0.8;
   z-index: 0;
+  pointer-events: none;
+  transform-origin: top right;
+  transition: transform 0.3s ease;
 }
 
 @media (min-width: 768px) {
@@ -207,6 +211,22 @@
 
   .title {
     font-size: 3rem;
+    text-align: left;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1rem;
+      left: 0;
+      transform: none;
+      width: 138px;
+      height: 1px;
+      background-color: #aeaeae;
+    }
+  }
+
+  .description {
+    text-align: left;
   }
 
   .mainImage {
@@ -217,8 +237,7 @@
   .secondaryImage {
     width: 170px;
     height: 170px;
-    // right: 10%;
-    top: 55%;
+    top: 25%;
     transform: none;
   }
 
@@ -226,6 +245,22 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
+  }
+
+  .dots {
+    right: -20%;
+    background-size: 12px 12px;
+    background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+    transform: scale(clamp(1, calc((100vw - 768px) / 512 + 1), 2));
+    transform-origin: top right;
+  }
+
+  .arrow {
+    top: 7%;
+  }
+
+  .subtitle {
+    display: none;
   }
 }
 
@@ -235,11 +270,17 @@
   }
 
   .title {
-    font-size: 3.5rem;
+    font-size: 3.25rem;
+  }
+
+  .description {
+    text-align: left;
   }
 
   .description {
     font-size: 1.1rem;
+    font-size: 0.8rem;
+
   }
 
   .mainImage {
@@ -250,6 +291,24 @@
   .secondaryImage {
     width: 230px;
     height: 230px;
+  }
+
+  .dots {
+    right: -12%;
+  }
+
+  .arrow {
+    right: 18%;
+  }
+
+  .content {
+    align-items: start;
+
+
+  }
+
+  .visual {
+    margin: 0;
   }
 }
 
@@ -262,5 +321,36 @@
   .secondaryImage {
     width: 320px;
     height: 320px;
+    right: -30%;
+    top: 40%;
+  }
+
+  .dots {
+    width: 150px;
+    height: 170px;
+    right: -20%;
+    background-size: 16px 16px;
+    background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+    transform: scale(clamp(1, calc((100vw - 768px) / 512 + 1), 2));
+    transform-origin: top right;
+
+  }
+
+  .arrow {
+    width: 100px;
+    right: 12%;
+    top: 10%;
+  
+  }
+}
+
+@media (min-width: 1920px) {
+  .dots {
+    width: 200px;
+    height: 380px;
+    top: -5%;
+    right: -34%;
+
+
   }
 }
