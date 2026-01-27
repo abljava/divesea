@@ -30,7 +30,7 @@ const NFTSlider = () => {
     delta: 0,
   });
 
-  const gap = window.matchMedia("(min-width: 1440px)").matches ? 40 : 32;
+  const gap = window.matchMedia("(min-width: 1440px)").matches ? 40 : 32; //comment
 
   useEffect(() => {
     if (status === "idle") {
